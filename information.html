@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events &amp; Membership Plans | LGU Society</title>
+
+  <!-- Page 2 uses EMBEDDED CSS only: all rules live inside this <style> element. -->
+  <style>
+    /* ---------- Base typography and colours (shared palette across the site) ---------- */
+    body {
+      margin: 0;
+      background-color: #f3f6f2;
+      color: #25302d;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* Body links use a deep copper-brown that stays readable on white */
+    main a {
+      color: #9a501f;
+    }
+
+    /* ELEMENT SELECTOR: styles every <h2> and <h3> on the page */
+    h2 {
+      margin: 0 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      color: #17463f;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      color: #17463f;
+    }
+
+    /* ELEMENT SELECTOR: paragraph spacing */
+    p {
+      margin: 0 0 14px;
+    }
+
+    /* ---------- Header and navigation ---------- */
+    header {
+      background-color: #17463f;
+      color: #ffffff;
+      padding: 36px 24px 30px;
+      text-align: center;
+      border-bottom: 4px solid #b5652d;
+    }
+
+    /* ELEMENT + CLASS: university emblem shown as a round badge in the header */
+    .logo {
+      display: block;
+      width: 102px;
+      height: 102px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      border: 3px solid #e8a46b;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 36px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      color: #d4e4de;
+    }
+
+    nav {
+      background-color: #ffffff;
+      border-bottom: 1px solid #d3dcd5;
+      text-align: center;
+      padding: 14px 16px;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 0 6px;
+      padding: 8px 18px;
+      color: #17463f;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background-color: #e3ede7;
+    }
+
+    /* CLASS SELECTOR: marks the link for the page the visitor is currently on */
+    .current {
+      background-color: #17463f;
+      color: #ffffff;
+    }
+
+    nav a.current:hover {
+      background-color: #17463f;
+    }
+
+    /* ATTRIBUTE SELECTOR: the navigation link whose href is registration.html is shown as a copper call-to-action button */
+    nav a[href="registration.html"] {
+      background-color: #b5652d;
+      color: #ffffff;
+    }
+
+    nav a[href="registration.html"]:hover {
+      background-color: #96501f;
+    }
+
+    /* ---------- Page layout ---------- */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 36px 24px 24px;
+    }
+
+    .panel {
+      background-color: #ffffff;
+      border: 1px solid #d3dcd5;
+      border-radius: 6px;
+      padding: 30px;
+      margin-bottom: 28px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .layout .panel {
+      margin-bottom: 0;
+    }
+
+    /* ---------- Article ---------- */
+    /* ID SELECTOR: the featured event article gets a copper accent bar */
+    #featured-event {
+      border-top: 5px solid #b5652d;
+    }
+
+    #featured-event .meta {
+      font-size: 14px;
+      color: #55625e;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    /* ---------- Aside ---------- */
+    /* CLASS SELECTOR: highlighted announcement box */
+    .notice {
+      background-color: #fbefe2;
+      border-left: 5px solid #b5652d;
+      border-radius: 4px;
+      padding: 22px 24px;
+    }
+
+    .notice h3 {
+      font-size: 19px;
+    }
+
+    .notice p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- Tables ---------- */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #bccbc1;
+      font-size: 16px;
+    }
+
+    caption {
+      caption-side: top;
+      text-align: left;
+      padding: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #17463f;
+    }
+
+    th,
+    td {
+      border: 1px solid #bccbc1;
+      padding: 12px 16px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    thead th {
+      background-color: #17463f;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    tbody th {
+      background-color: #e6eee9;
+      color: #17463f;
+    }
+
+    tbody tr:nth-child(even) td {
+      background-color: #f7faf7;
+    }
+
+    tbody tr:hover td {
+      background-color: #edf3ee;
+    }
+
+    /* ---------- Media ---------- */
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    audio,
+    video {
+      display: block;
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    video {
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      background-color: #0f2e29;
+    }
+
+    /* Wrapper lets the large play button sit on top of the video */
+    .video-wrap {
+      position: relative;
+    }
+
+    /* CLASS SELECTOR: large centred play button, hidden once the video starts */
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 76px;
+      height: 76px;
+      margin: -48px 0 0 -38px;
+      padding: 0;
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      background-color: rgba(181, 101, 45, 0.92);
+      cursor: pointer;
+      transition: background-color 0.15s, transform 0.15s;
+    }
+
+    .play-overlay::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -14px 0 0 -9px;
+      border-style: solid;
+      border-width: 14px 0 14px 24px;
+      border-color: transparent transparent transparent #ffffff;
+    }
+
+    .play-overlay:hover,
+    .play-overlay:focus-visible {
+      background-color: #96501f;
+      transform: scale(1.08);
+    }
+
+    .play-overlay[hidden] {
+      display: none;
+    }
+
+    .caption {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #55625e;
+    }
+
+    /* ---------- Instagram reel embed ---------- */
+    .reel-embed {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* ELEMENT SELECTOR: the embedded Instagram player */
+    iframe {
+      display: block;
+      width: 100%;
+      height: 640px;
+      border: 1px solid #d3dcd5;
+      border-radius: 6px;
+      background-color: #ffffff;
+    }
+
+    .reel-embed .caption {
+      text-align: center;
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background-color: #0f2e29;
+      color: #b5cbc4;
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    footer a {
+      color: #e8a46b;
+    }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 760px) {
+      .layout,
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Site header ===== -->
+  <header>
+    <img class="logo" src="images/lgu-logo.png" alt="Emblem of Lahore Garrison University" width="102" height="102">
+    <h1>Events &amp; Membership Plans</h1>
+    <p>See what is coming up and choose the membership that suits you.</p>
+  </header>
+
+  <!-- ===== Main navigation (links to all three pages) ===== -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="information.html" class="current">Events &amp; Plans</a>
+    <a href="registration.html">Join Us</a>
+  </nav>
+
+  <main>
+
+    <!-- ===== Featured event (article) and related announcement (aside) ===== -->
+    <div class="layout">
+
+      <!-- Self-contained description of one event -->
+      <article id="featured-event" class="panel">
+        <p class="meta">Featured event &middot; Saturday, 14 November 2026</p>
+        <h2>Inter-Faculty Debate Championship</h2>
+        <p>Eight teams, one trophy. Each year the Inter-Faculty Debate Championship brings together student speakers from across the university for a full day of structured argument in front of a live audience and a panel of three judges.</p>
+        <p>Teams of three receive their motion thirty minutes before each round, so the emphasis is on quick thinking, clear structure and respectful rebuttal rather than rehearsed speeches. Quarter-finals run in the morning, semi-finals after lunch, and the final begins at 4:30 pm in the Main Auditorium.</p>
+        <p>Members can attend free of charge, and every attendee receives a feedback sheet that explains how the judges scored each round &mdash; a useful way to learn what makes an argument persuasive.</p>
+        <h3>What to expect</h3>
+        <p>Doors open at 9:00 am. Refreshments are available between rounds, and a networking hour follows the prize-giving.</p>
+      </article>
+
+      <!-- Related information -->
+      <aside class="notice">
+        <h3>Announcement</h3>
+        <p><strong>Early registration is open.</strong> Members who sign up before 31 October pay no joining fee for the autumn term.</p>
+        <p><strong>Tip:</strong> Bring your student ID to the first session so we can issue your membership card on the spot.</p>
+        <p>Questions? Visit the society office or <a href="registration.html">register online</a>.</p>
+      </aside>
+
+    </div>
+
+    <!-- ===== Events table ===== -->
+    <section class="panel">
+      <h2>Upcoming Events</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Society events for the autumn and winter terms</caption>
+          <thead>
+            <tr>
+              <th scope="col">Event</th>
+              <th scope="col">Date</th>
+              <th scope="col">Venue</th>
+              <th scope="col">Entry</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Welcome Week Open Day</th>
+              <td>Monday, 26 October 2026</td>
+              <td>Main Building Arcade</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <th scope="row">CV &amp; Interview Workshop</th>
+              <td>Thursday, 5 November 2026</td>
+              <td>Seminar Room 3</td>
+              <td>Free for members</td>
+            </tr>
+            <tr>
+              <th scope="row">Inter-Faculty Debate Championship</th>
+              <td>Saturday, 14 November 2026</td>
+              <td>Main Auditorium</td>
+              <td>Free for members</td>
+            </tr>
+            <tr>
+              <th scope="row">Alumni Career Talk</th>
+              <td>Wednesday, 2 December 2026</td>
+              <td>Lecture Hall B</td>
+              <td>PKR 300 for guests</td>
+            </tr>
+            <tr>
+              <th scope="row">Winter Photography Walk</th>
+              <td>Sunday, 13 December 2026</td>
+              <td>Old City Heritage Trail</td>
+              <td>PKR 500 (transport)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Membership plans table ===== -->
+    <section class="panel">
+      <h2>Membership Plans</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Annual membership plans and what each includes</caption>
+          <thead>
+            <tr>
+              <th scope="col">Plan</th>
+              <th scope="col">Annual fee</th>
+              <th scope="col">What is included</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Associate</th>
+              <td>PKR 1,000</td>
+              <td>Entry to weekly sessions and open events, society newsletter.</td>
+            </tr>
+            <tr>
+              <th scope="row">Standard</th>
+              <td>PKR 2,500</td>
+              <td>Everything in Associate, plus workshops, a membership card and voting rights.</td>
+            </tr>
+            <tr>
+              <th scope="row">Premium</th>
+              <td>PKR 4,000</td>
+              <td>Everything in Standard, plus guest-talk priority seating, society hoodie and committee eligibility.</td>
+            </tr>
+            <tr>
+              <th scope="row">Alumni</th>
+              <td>PKR 1,500</td>
+              <td>Mentoring opportunities, annual dinner invitation and archive access.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Audio and video ===== -->
+    <section class="panel">
+      <h2>Get a Feel for the Society</h2>
+      <div class="media-grid">
+
+        <figure>
+          <h3>Society theme</h3>
+          <!-- Audio with controls and fallback text -->
+          <audio controls preload="none">
+            <source src="audio/society-theme.mp3" type="audio/mpeg">
+            <source src="audio/society-theme.ogg" type="audio/ogg">
+            Your browser does not support the audio element. You can
+            <a href="audio/society-theme.mp3">download the society theme</a> instead.
+          </audio>
+          <figcaption class="caption">A short instrumental used at the opening of our events (about 16 seconds).</figcaption>
+        </figure>
+
+        <figure>
+          <h3>LGU Society reel</h3>
+          <!-- Video with controls, poster image and fallback text -->
+          <div class="video-wrap">
+            <video id="welcome-video" controls preload="metadata" poster="images/video-poster.jpg" width="480" height="270">
+              <source src="video/lgu-society.mp4" type="video/mp4">
+              Your browser does not support the video element. You can
+              <a href="video/lgu-society.mp4">download the LGU Society reel</a> instead.
+            </video>
+            <!-- Large play button (the normal video controls remain available) -->
+            <button type="button" class="play-overlay" id="play-overlay" aria-label="Play video"></button>
+          </div>
+          <figcaption class="caption">A short look at life in the LGU Society.</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ===== Instagram reel (official embed, streamed from Instagram) ===== -->
+    <section class="panel">
+      <h2>Watch Our Reel</h2>
+      <p>See the LGU Society in action. This video plays straight from our Instagram account.</p>
+      <div class="reel-embed">
+        <iframe src="https://www.instagram.com/reel/DJy46dbIaNk/embed/" title="LGU Society reel on Instagram" loading="lazy" allowfullscreen></iframe>
+        <p class="caption">If the video does not load, <a href="https://www.instagram.com/reel/DJy46dbIaNk/" target="_blank" rel="noopener">open the reel on Instagram</a>.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>Society Office, Student Centre, Lahore Garrison University &middot; <a href="mailto:hello@lgu-society.example">hello@lgu-society.example</a></p>
+    <p>&copy; 2026 LGU Society, Lahore Garrison University. Sample site created for coursework.</p>
+  </footer>
+
+  <!-- Shows the large play button while the video is paused and hides it during playback -->
+  <script>
+    var video = document.getElementById("welcome-video");
+    var overlay = document.getElementById("play-overlay");
+
+    overlay.addEventListener("click", function () { video.play(); });
+    video.addEventListener("play", function () { overlay.hidden = true; });
+    video.addEventListener("pause", function () { overlay.hidden = false; });
+    video.addEventListener("ended", function () { overlay.hidden = false; });
+  </script>
+
+</body>
+</html>

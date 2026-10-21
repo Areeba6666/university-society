@@ -1,0 +1,335 @@
+/* ==========================================================
+   style.css — External stylesheet for registration.html
+   LGU Society
+   Palette: deep green #17463f · copper #b5652d · soft sage-white #f3f6f2
+   ========================================================== */
+
+/* ---------- Page base ---------- */
+body {
+  margin: 0;
+  background-color: #f3f6f2;
+  color: #25302d;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* ELEMENT SELECTOR: paragraph spacing for all <p> elements */
+p {
+  margin: 0 0 14px;
+}
+
+/* Body links use a deep copper-brown that stays readable on white */
+main a {
+  color: #9a501f;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+  color: #17463f;
+}
+
+/* ---------- Header, navigation, footer ---------- */
+header {
+  background-color: #17463f;
+  color: #ffffff;
+  padding: 36px 24px 30px;
+  text-align: center;
+  border-bottom: 4px solid #b5652d;
+}
+
+/* CLASS SELECTOR: university emblem shown as a round badge in the header */
+.logo {
+  display: block;
+  width: 102px;
+  height: 102px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  border: 3px solid #e8a46b;
+}
+
+header h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 36px;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: #d4e4de;
+}
+
+nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d3dcd5;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+nav a {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 8px 18px;
+  color: #17463f;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 4px;
+}
+
+/* HOVER on links */
+nav a:hover {
+  background-color: #e3ede7;
+}
+
+/* ATTRIBUTE SELECTOR: the navigation link pointing to registration.html is the copper call-to-action */
+nav a[href="registration.html"] {
+  background-color: #b5652d;
+  color: #ffffff;
+}
+
+nav a[href="registration.html"]:hover {
+  background-color: #96501f;
+}
+
+/* CLASS SELECTOR: current page link (declared after the attribute rule, so it wins) */
+nav a.current,
+nav a.current:hover {
+  background-color: #17463f;
+  color: #ffffff;
+}
+
+footer {
+  background-color: #0f2e29;
+  color: #b5cbc4;
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: #e8a46b;
+}
+
+/* ---------- Layout ---------- */
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 24px 24px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+/* ---------- Form container ---------- */
+/* ID SELECTOR: the registration form card (padding, background and border) */
+#registration-form {
+  padding: 28px 32px 32px;
+  background-color: #ffffff;
+  border: 1px solid #d3dcd5;
+  border-top: 5px solid #b5652d;
+  border-radius: 6px;
+}
+
+fieldset {
+  margin: 0 0 24px;
+  padding: 18px 22px 8px;
+  border: 1px solid #c5d2c9;
+  border-radius: 6px;
+}
+
+legend {
+  padding: 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #17463f;
+}
+
+/* ---------- Labels and inputs ---------- */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #17463f;
+}
+
+/* CLASS SELECTOR: wrapper that spaces each label + control pair */
+.field {
+  margin-bottom: 18px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.hint {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #55625e;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid #aebbb2;
+  border-radius: 4px;
+  background-color: #fbfdfb;
+  color: #25302d;
+  font-family: inherit;
+  font-size: 16px;
+  transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+/* ATTRIBUTE SELECTOR: email field gets a copper accent edge so the attribute rule is visibly applied */
+input[type="email"] {
+  border-left: 4px solid #b5652d;
+}
+
+input[type="password"] {
+  border-left: 4px solid #17463f;
+  letter-spacing: 1px;
+}
+
+/* FOCUS feedback on every text-like control */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #17463f;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(181, 101, 45, 0.35);
+}
+
+/* Show a red edge only after the visitor has typed something invalid */
+input:not(:placeholder-shown):invalid,
+textarea:invalid {
+  border-color: #a63d40;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ---------- Radio buttons and checkboxes ---------- */
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.choice label {
+  display: block;
+  margin: 0;
+  font-weight: 400;
+  color: #25302d;
+  cursor: pointer;
+}
+
+.choice input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 5px 0 0;
+  accent-color: #17463f;
+  cursor: pointer;
+}
+
+.choice strong {
+  color: #17463f;
+}
+
+/* ---------- Buttons ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+button {
+  padding: 12px 28px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+button[type="submit"] {
+  background-color: #17463f;
+  color: #ffffff;
+}
+
+/* HOVER on buttons */
+button[type="submit"]:hover {
+  background-color: #b5652d;
+}
+
+button[type="reset"] {
+  background-color: #ffffff;
+  color: #17463f;
+  border-color: #17463f;
+}
+
+button[type="reset"]:hover {
+  background-color: #e3ede7;
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(181, 101, 45, 0.55);
+  outline-offset: 2px;
+}
+
+/* ---------- Confirmation message ---------- */
+.success {
+  margin-top: 22px;
+  padding: 16px 20px;
+  background-color: #e8f1e6;
+  border-left: 5px solid #3d7a4a;
+  border-radius: 4px;
+  color: #23402b;
+}
+
+.success[hidden] {
+  display: none;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  #registration-form {
+    padding: 20px 18px 24px;
+  }
+
+  fieldset {
+    padding: 16px 14px 6px;
+  }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Membership Registration | LGU Society</title>
+  <!-- Page 3 uses EXTERNAL CSS only: all styling comes from style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===== Site header ===== -->
+  <header>
+    <img class="logo" src="images/lgu-logo.png" alt="Emblem of Lahore Garrison University" width="102" height="102">
+    <h1>Membership Registration</h1>
+    <p>Create your account and join the society in a few minutes.</p>
+  </header>
+
+  <!-- ===== Main navigation (links to all three pages) ===== -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="information.html">Events &amp; Plans</a>
+    <a href="registration.html" class="current">Join Us</a>
+  </nav>
+
+  <main>
+
+    <div class="intro">
+      <h2>Become a member</h2>
+      <p>Fields marked with an asterisk (*) are required. Not sure which plan to pick? Compare them on the <a href="information.html">Events &amp; Plans</a> page first.</p>
+    </div>
+
+    <!-- ===== Registration form (front-end only: nothing is sent to a server) ===== -->
+    <form id="registration-form" method="post" action="#">
+
+      <!-- Group 1: account creation -->
+      <fieldset>
+        <legend>Create your account</legend>
+
+        <div class="field">
+          <label for="fullname">Full Name *</label>
+          <input type="text" id="fullname" name="fullname" placeholder="e.g. Ayesha Khan" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password *</label>
+          <input type="password" id="password" name="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required>
+          <span class="hint">Use at least 8 characters. Dummy details are fine while testing.</span>
+        </div>
+      </fieldset>
+
+      <!-- Group 2: personal details -->
+      <fieldset>
+        <legend>About you</legend>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="16" max="60" placeholder="16 – 60">
+          </div>
+
+          <div class="field">
+            <label for="preferred-date">Preferred orientation date</label>
+            <input type="date" id="preferred-date" name="preferred_date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="faculty">Faculty / Department *</label>
+          <select id="faculty" name="faculty" required>
+            <option value="" selected disabled>Select your faculty</option>
+            <option value="computer-science">Computer Science</option>
+            <option value="engineering">Engineering</option>
+            <option value="business">Business &amp; Management</option>
+            <option value="arts-humanities">Arts &amp; Humanities</option>
+            <option value="sciences">Natural Sciences</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <!-- Group 3: radio buttons (only one can be chosen) -->
+      <fieldset>
+        <legend>Membership plan</legend>
+
+        <div class="choice">
+          <input type="radio" id="plan-associate" name="plan" value="associate">
+          <label for="plan-associate"><strong>Associate</strong> &mdash; PKR 1,000 per year. Weekly sessions and open events.</label>
+        </div>
+
+        <div class="choice">
+          <input type="radio" id="plan-standard" name="plan" value="standard" checked>
+          <label for="plan-standard"><strong>Standard</strong> &mdash; PKR 2,500 per year. Adds workshops, a membership card and voting rights.</label>
+        </div>
+
+        <div class="choice">
+          <input type="radio" id="plan-premium" name="plan" value="premium">
+          <label for="plan-premium"><strong>Premium</strong> &mdash; PKR 4,000 per year. Adds priority seating, a hoodie and committee eligibility.</label>
+        </div>
+      </fieldset>
+
+      <!-- Group 4: checkboxes (each one independent) -->
+      <fieldset>
+        <legend>Interests</legend>
+
+        <div class="choice">
+          <input type="checkbox" id="interest-debate" name="interest_debate" value="yes">
+          <label for="interest-debate">Debates and public speaking</label>
+        </div>
+
+        <div class="choice">
+          <input type="checkbox" id="interest-workshops" name="interest_workshops" value="yes">
+          <label for="interest-workshops">Skill workshops</label>
+        </div>
+
+        <div class="choice">
+          <input type="checkbox" id="interest-service" name="interest_service" value="yes">
+          <label for="interest-service">Community service</label>
+        </div>
+
+        <div class="choice">
+          <input type="checkbox" id="interest-photo" name="interest_photo" value="yes">
+          <label for="interest-photo">Photography walks</label>
+        </div>
+      </fieldset>
+
+      <!-- Group 5: free text -->
+      <fieldset>
+        <legend>Anything else?</legend>
+
+        <div class="field">
+          <label for="comments">Additional information</label>
+          <textarea id="comments" name="comments" maxlength="300" placeholder="Tell us why you would like to join, or anything we should know (max 300 characters)."></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Submit and Reset -->
+      <div class="actions">
+        <button type="submit">Submit registration</button>
+        <button type="reset">Reset form</button>
+      </div>
+
+      <!-- Confirmation shown after a valid submission (no server is involved) -->
+      <p id="form-message" class="success" role="status" hidden>Thank you! Your registration has been received. This is a demonstration form, so no data was stored or sent.</p>
+
+    </form>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>Society Office, Student Centre, Lahore Garrison University &middot; <a href="mailto:hello@lgu-society.example">hello@lgu-society.example</a></p>
+    <p>&copy; 2026 LGU Society, Lahore Garrison University. Sample site created for coursework.</p>
+  </footer>
+
+  <!-- Front-end demo only: runs after the browser's built-in validation passes -->
+  <script>
+    var form = document.getElementById("registration-form");
+    var message = document.getElementById("form-message");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      message.hidden = false;
+      message.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    form.addEventListener("reset", function () {
+      message.hidden = true;
+    });
+  </script>
+
+</body>
+</html>
